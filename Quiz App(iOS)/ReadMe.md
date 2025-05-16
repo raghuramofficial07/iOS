@@ -10,8 +10,10 @@ A beginner-friendly iOS quiz app built using Swift and UIKit that tests users wi
 
 
 
-Uploading Screen Recording 2025-05-16 at 10.51.07 AM.mov…
+https://github.com/user-attachments/assets/7955ac57-746e-4e51-9964-67ebc2848fc9
 
+
+  
 
 
 - ✅ Multiple true/false trivia questions
