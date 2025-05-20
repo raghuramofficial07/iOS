@@ -31,7 +31,6 @@ A simple Body Mass Index (BMI) Calculator iOS application built using UIKit and 
 <img width="1160" alt="Screenshot 2025-05-20 at 7 06 27 PM" src="https://github.com/user-attachments/assets/c8fb403d-f9b6-4463-807d-2b795c044c03" />
 
 
-
 ## ✅ How to Run
 
 1. Open the project in Xcode
