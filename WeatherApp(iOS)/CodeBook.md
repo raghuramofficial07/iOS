@@ -21,9 +21,12 @@ func parseJSON(_ weatherData: Data) -> WeatherData? {
         return nil
     }
 }
-JSON
 
-We pass the raw data to the parseJSON(weatherData:) function.
+```
+
+---
+
+##We pass the raw data to the parseJSON(weatherData:) function.
 Inside it, the decoder decodes the entire JSON, but only keeps the values that match the property names in our struct — like matching "name" in JSON to name in our struct.
 
 ✅ Summary (For Future You):
@@ -41,3 +44,14 @@ You cannot access them directly through the struct type (like WeatherData.name) 
 ✅ Final Answer:
 
 Yes. This process happens for every Swift struct that conforms to the Decodable protocol. Swift uses the struct’s property names to match against JSON keys, and it maps raw byte values directly into the struct’s properties.
+
+
+## Q&A: Understanding JSON Decoding Internals in Swift
+
+**Q:**  
+Does the user-defined Swift struct store the raw JSON data internally during decoding, or where does that data reside if not inside the struct?
+
+**A:**  
+The raw JSON data initially resides in the `Data` object you provide to `JSONDecoder`. During decoding, the `JSONDecoder` internally parses and temporarily holds this raw data in its own buffers. After parsing, it converts the data into the appropriate Swift types and directly initializes your struct’s properties with those values.
+
+The struct itself **does not** store the raw JSON data — it only contains the final decoded, strongly typed property values. So, the raw bytes are managed inside the decoder, **not** within your struct.
