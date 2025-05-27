@@ -55,3 +55,37 @@ Does the user-defined Swift struct store the raw JSON data internally during dec
 The raw JSON data initially resides in the `Data` object you provide to `JSONDecoder`. During decoding, the `JSONDecoder` internally parses and temporarily holds this raw data in its own buffers. After parsing, it converts the data into the appropriate Swift types and directly initializes your struct’s properties with those values.
 
 The struct itself **does not** store the raw JSON data — it only contains the final decoded, strongly typed property values. So, the raw bytes are managed inside the decoder, **not** within your struct.
+
+
+```swift
+
+    func parseJSON(_ weatherData: Data) -> WeatherModel? {
+        let decoder = JSONDecoder()
+        do {
+            let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
+            let id = decodedData.weather[0].id
+            let temp = decodedData.main.temp
+            let name = decodedData.name
+            
+            let weather = WeatherModel(conditionId: id, cityName: name, temperature: temp)
+            return weather
+        } catch {
+            delegate?.didFailWithError(error: error)
+            print("Failed to decode: \(error)")
+            return nil
+        }
+    }
+```
+✅ What You Said (with your comment):
+» Here it decoded it self using self and gets that value from the WeatherData from itself again which is decoded to        store here in separate var like id which will be plain text
+🔍 What You Meant (and yes, you're right):
+The decoder uses the structure of WeatherData (given by WeatherData.self) to understand how to decode the raw JSON.
+Once decoded, you can access individual values from decodedData, like .id, .temp, and .name.
+You're then assigning these to separate Swift variables like let id = ....
+Why not?
+The decode method requires two parameters:
+```swift
+func decode<T>(_ type: T.Type, from data: Data) throws -> T where T: Decodable
+```
+The first parameter is the type you want to decode into (e.g., WeatherData.self).
+The second parameter is the raw JSON data (your Data object).
