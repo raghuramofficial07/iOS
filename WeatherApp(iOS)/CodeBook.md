@@ -89,3 +89,15 @@ func decode<T>(_ type: T.Type, from data: Data) throws -> T where T: Decodable
 ```
 The first parameter is the type you want to decode into (e.g., WeatherData.self).
 The second parameter is the raw JSON data (your Data object).
+
+```swift
+// 1. Create an instance of JSONDecoder, which will handle converting JSON data into Swift types
+let decoder = JSONDecoder()
+
+// 2. Use the decoder to decode the raw JSON data (weatherData)
+//    - WeatherData.self tells the decoder: "Decode this JSON into an instance of the WeatherData struct"
+//    - from: weatherData provides the raw JSON data to decode
+// 3. The result is stored in decodedData, which is a fully populated WeatherData instance
+let decodedData = try decoder.decode(WeatherData.self, from: weatherData)
+
+```
