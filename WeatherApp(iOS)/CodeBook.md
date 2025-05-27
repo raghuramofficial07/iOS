@@ -26,7 +26,7 @@ func parseJSON(_ weatherData: Data) -> WeatherData? {
 
 ---
 
-##We pass the raw data to the parseJSON(weatherData:) function.
+## We pass the raw data to the parseJSON(weatherData:) function.
 Inside it, the decoder decodes the entire JSON, but only keeps the values that match the property names in our struct — like matching "name" in JSON to name in our struct.
 
 ✅ Summary (For Future You):
