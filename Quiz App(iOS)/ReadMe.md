@@ -1,3 +1,6 @@
+<img width="841" alt="Screenshot 2025-06-22 at 10 51 31 AM" src="https://github.com/user-attachments/assets/501c98ee-809c-4376-b32d-6d38ae07c489" />
+
+
 # 🧠 True or False Quiz App (iOS)
 
 A beginner-friendly iOS quiz app built using Swift and UIKit that tests users with fun True/False trivia questions. It implements the **Model-View-Controller (MVC)** design pattern to clearly separate app logic, UI, and data structures. This is a great starter project for anyone learning iOS development.
